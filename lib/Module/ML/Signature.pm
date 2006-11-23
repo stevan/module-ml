@@ -1,17 +1,8 @@
 
 package Module::ML::Signature;
 use Moose;
-use Moose::Util::TypeConstraints;
-    
-use Set::Object;
 
-subtype 'Set::Object'
-    => as 'Object'
-    => where { $_->isa('Set::Object') };
-
-coerce 'Set::Object'
-    => from 'ArrayRef'
-        => via { Set::Object->new(@{$_}) };
+use Module::ML::Types;
 
 has 'name' => (
     is  => 'ro',
@@ -25,7 +16,7 @@ has 'definitions' => (
     required => 1,
 );
 
-no Moose; no Moose::Util::TypeConstraints; 1;
+no Moose; 1;
 
 __END__
 

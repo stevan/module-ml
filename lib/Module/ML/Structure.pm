@@ -1,17 +1,8 @@
 
 package Module::ML::Structure;
 use Moose;
-use Moose::Util::TypeConstraints;
 
-use Class::MOP::Package;
-
-subtype 'Class::MOP::Package'
-    => as 'Object'
-    => where { $_->isa('Class::MOP::Package') };
-
-coerce 'Class::MOP::Package'
-    => from 'Str'
-        => via { Class::MOP::Package->initialize($_) };
+use Module::ML::Types;
 
 has 'signature' => (
     is       => 'ro',
@@ -58,7 +49,7 @@ sub export_to {
     }        
 }
 
-no Moose; no Moose::Util::TypeConstraints; 1;
+no Moose; 1;
 
 __END__
 
