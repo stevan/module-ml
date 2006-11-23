@@ -14,7 +14,7 @@ has 'parameter' => (
     required => 1,
 );
 
-sub apply {
+sub create {
     my ($self, $name, $structure) = @_;
     
     my $new_pkg = Class::MOP::Package->initialize($name);
